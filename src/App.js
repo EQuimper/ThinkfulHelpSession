@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Button } from 'react-bootstrap';
+import { ModalComponent } from './components';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
-}
+const App = ({ modal, showModal, closeModal }) => (
+  <div className="App">
+    <Button onClick={() => showModal('modal1')}>Modal 1</Button>
+    <Button onClick={() => showModal('modal2')}>Modal 2</Button>
+    <Button onClick={() => showModal('modal3')}>Modal 3</Button>
+    <ModalComponent name="modal1" show={modal.modal1.show} closeModal={() => closeModal()} />
+    <ModalComponent name="modal2" show={modal.modal2.show} closeModal={() => closeModal()} />
+    <ModalComponent name="modal3" show={modal.modal3.show} closeModal={() => closeModal()} />
+  </div>
+);
 
 export default App;
